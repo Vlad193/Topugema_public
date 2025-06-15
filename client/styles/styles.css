@@ -1,0 +1,115 @@
+body{
+    color: var(--text-color);
+    text-size-adjust: 30px;
+    font-family: Helvetica, sans-serif;
+}
+
+.txt-break {
+    white-space: normal !important; 
+    word-wrap: break-word; 
+    overflow-wrap: break-word;
+}
+
+input {
+  background-color: var(--input-background);
+  color: var(--input-text-color);
+  border: 1px solid var(--input-border-color);
+  border-radius: 5px;
+  height: 30px;
+}
+
+input:focus {
+  border-color: var(--input-focus-border-color);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--focus-ring-color);
+}
+
+input:hover {
+  background-color: var(--button-hover-background);
+  border-color: var(--button-hover-border-color);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="search"],
+textarea {
+  padding: 0rem 0.75rem;
+}
+
+button {
+  background-color: var(--button-background);
+  color: var(--button-text-color);
+  border: 1px solid var(--button-border-color);
+  border-radius: 5px;
+  height: 30px;
+}
+
+button:hover {
+  background-color: var(--button-hover-background);
+  border-color: var(--button-hover-border-color);
+}
+
+button:disabled {
+  background-color: var(--disabled-background);
+  color: var(--button-disabled-text-color);
+  border-color: var(--disabled-border-color);
+}
+
+.alert-panel {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 50px;
+  margin: 5px 5px 0 0;
+  background: var(--surface-color);
+  border: var(--border-color) 3px solid;
+  border-radius: 5px;
+}
+
+#alert-container {
+  position: fixed;
+  height: 100%;
+  top: 0px;
+  right: 0px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-color: rgb(114, 114, 114) rgb(43, 43, 43);
+  scrollbar-width: thin;
+}
+
+.panel1 {
+    display: flex;
+    height: auto;
+    margin: 5px 5px 5px 2px;
+    padding: 5px;
+    background-color: var(--surface-color);
+    color: var(--text-color);
+    border-radius: 12px;
+    overflow: hidden;
+    width: auto;
+}
+
+.icon-iv {
+  filter: brightness(0) invert(1);
+}
+
+.icon-1c {
+  width: 32px;
+  height: 32px;
+  filter: brightness(0) saturate(100%) invert(100%) sepia(3%) saturate(287%) hue-rotate(180deg) brightness(116%) contrast(76%);
+}
+
+.icon-2c {
+  background-color: var(--secondary-color);
+}
+
+sl-split-panel::part(divider) {
+   background-color: var(--surface-color);
+}

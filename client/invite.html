@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/var.css">
+    <link rel="stylesheet" href="styles/auth.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="center">
+        <form class="auth-panel" method="post">
+            <h1>Are you sure join to server?</h1>
+            <h2 id="srvname">...</h2>
+            <input type="submit" value="Join">
+        </form>
+    </div>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="scripts/script.js"></script>
+<script>
+$(document).ready(function() {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    if (id){
+        $.ajax({
+        url: '/api/invite/data?id=' + encodeURIComponent(id),
+        method: 'POST',
+        success: function (response) {
+            var str = response;
+            $("#srvname").text(response);
+        },
+        error: function (xhr) {
+            alertPanel('Error',xhr.responseText);
+        }
+    });
+    }
+});
+$('.auth-panel').on('submit', function (e) {
+    e.preventDefault();
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    token = sessionStorage.getItem("token");
+    $.ajax({
+        url: '/api/invite',
+        method: 'POST',
+        data: {
+            token: token,
+            id: id,
+        },
+        success: function (response) {
+            var str = response;
+            location.assign("app.html");
+        },
+        error: function (xhr) {
+            alertPanel('Error',xhr.responseText);
+        }
+    });
+});
+</script>

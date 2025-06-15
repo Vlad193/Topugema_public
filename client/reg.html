@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/var.css">
+    <link rel="stylesheet" href="styles/auth.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="center">
+        <form class="auth-panel" method="post">
+            <input type="text" name="name" id="name" placeholder="Username" autocomplete="off">
+            <span id="name_msg"></span>
+            <br>
+            <input type="password" name="password" id="password" placeholder="Password">
+            <br>
+            <input type="password" name="confirm_password" id="confirm_password" placeholder="Repeat Password">
+            <span id="pass_msg"></span>
+            <br>
+            <input type="submit" value="Register">
+            <div>
+                <span class="reg-link">Already have an account?</span>
+                <a href="auth.html" class="reg-link" >Sign In</a>
+                <style>.reg-link{color: rgb(160, 160, 160)}.reg-link:hover{color: rgb(104, 104, 104)} ;</style>
+            </div>
+            
+        </form>
+    </div>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="scripts/script.js"></script>
+<script>
+var corr_name = false;
+var corr_pass = false;
+$('#password, #confirm_password').on('keyup', function () {
+    corr_pass = false;
+    if (!$('#password').val()){
+        $('#pass_msg').html('').css('color', 'Gray');
+    } else if ($('#password').val().length < 8){
+        $('#pass_msg').html('Password must have at least 8 characters').css('color', 'red');
+    } else if ($('#password').val() != $('#confirm_password').val()) {
+        $('#pass_msg').html('Password Not Matching').css('color', 'orange');
+    } else {
+        $('#pass_msg').html('All OK!').css('color', 'green');
+        corr_pass = true;
+    }
+        
+});
+$('#name').on('keyup', function () {
+    corr_name = false;
+    if (!$('#name').val()){
+        $('#name_msg').html('').css('color', 'Gray');
+    } else if (!/^[a-zA-Z0-9_.-]+$/.test($('#name').val())){
+        $('#name_msg').html('Name must contain only <span style="color: white;">a-z A-Z 0-9 . - _</span> symbols').css('color', 'Orange');
+    } else if ($('#name').val().length < 3){
+        $('#name_msg').html('Name must contain more than 3 symbols').css('color', 'Yellow');
+    } else if ($('#name').val().length > 16){
+        $('#name_msg').html('Name must contain less than 16 symbols').css('color', 'Yellow');
+    } else {
+        $('#name_msg').html('All OK!').css('color', 'green');
+        corr_name = true;
+    }
+});
+
+$('.auth-panel').on('submit', function (e) {
+    e.preventDefault();
+
+    const name = $('#name').val();
+    const password = $('#password').val();
+    if (!corr_name || !corr_pass) {
+        alertPanel("Form Error","Uncorrect or Blank Form, Solve requirements");
+        return;
+    }
+    $.ajax({
+        url: '/api/auth/reg',
+        method: 'POST',
+        data: {
+            name: name,
+            password: password,
+        },
+        success: function (response) {
+            var str = response;
+            sessionStorage.setItem("token", str);
+            location.assign("/client/app.html");
+        },
+        error: function (xhr) {
+            alertPanel('Error',xhr.responseText);
+        }
+    });
+});
+</script>

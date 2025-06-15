@@ -1,0 +1,46 @@
+#glob-servers{
+    width: 90px;
+    min-width: 65px;
+    height: 100%;
+    /*background-color: var(--background-color);*/
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-color: rgb(114, 114, 114) rgb(43, 43, 43);
+    scrollbar-width: thin;
+}
+
+.server-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    width: var(--server-avatar-size); 
+    height: var(--server-avatar-size);
+    background-color: var(--surface-color);
+    border: var(--border-color) 5px solid;
+    border-radius: 50%;
+}
+
+.server-card img{
+    width: var(--server-avatar-size);
+    height: var(--server-avatar-size);
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 50%;
+}
+
+.server-card:hover{
+    border-color: #383838;
+}
+
+.new-server{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    width: calc(var(--server-avatar-size) + 10px); 
+    height: calc(var(--server-avatar-size) + 10px); 
+    background: radial-gradient(var(--surface-color) 40%, rgb(160,160,160));
+    border-radius: 50%;
+}

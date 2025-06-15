@@ -1,0 +1,77 @@
+#glob-header{
+    grid-area: Header;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+#glob-header > :first-child,
+#glob-header > :last-child {
+    flex: 0 0 30px; /* фиксированная ширина 50px */
+}
+#glob-header > :nth-child(2) {
+    flex: 1 1 auto; /* занимает всё оставшееся место, может сжиматься до 0 */
+    min-width: 0;   /* разрешаем сжиматься */
+}
+
+
+.header-panel{
+    background-color: var(--other-surface-color);
+    border: var(--border-color) 5px solid;
+    border-top: 0px;
+    border-radius: 0px 0px 10px 10px;
+    padding: 5px;
+    margin: 0px 2px 0px 2px;
+    /*width: 100%;*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    min-width: 0;
+    flex-shrink: 1;
+}
+.header-panel > * {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal; /* разрешаем перенос */
+    word-break: break-word;
+}
+
+.header-subpanel h1,
+.header-subpanel h2,
+.header-subpanel h3,
+.header-subpanel h4,
+.header-subpanel h5,
+.header-subpanel h6,
+.header-subpanel p {
+    white-space: normal;       /* разрешить перенос */
+    word-break: break-word;    /* переносить длинные слова */
+    overflow-wrap: break-word; /* тоже для переноса слов */
+}
+
+.header-circle{
+    background-color: var(--other-surface-color);
+    border: var(--border-color) 5px solid;
+    border-top: 0px;
+    border-radius: 0 0 10px 10px;
+    padding: 5px;
+    margin: 0px 2px 0px 2px;
+    width: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-subpanel{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-icons{
+    width: 100%;
+}
+
+.header-circle img{
+    width: 100%;
+}

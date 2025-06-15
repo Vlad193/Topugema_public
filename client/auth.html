@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/var.css">
+    <link rel="stylesheet" href="styles/auth.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="center">
+        <form class="auth-panel" method="post">
+            <input type="text" name="name" id="name" placeholder="Username" autocomplete="off">
+            <br>
+            <input type="password" name="password" id="password" placeholder="Password">
+            <br>
+            <input type="submit" value="Login">
+            <div>
+                <span class="reg-link">Don't have an account yet?</span>
+                <a href="reg.html" class="reg-link" >Sing Up</a>
+                <style>.reg-link{color: rgb(160, 160, 160)}.reg-link:hover{color: rgb(104, 104, 104)} ;</style>
+            </div>
+            
+        </form>
+    </div>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="scripts/script.js"></script>
+<script>
+$('.auth-panel').on('submit', function (e) {
+    e.preventDefault();
+
+    const name = $('#name').val();
+    const password = $('#password').val();
+    if (!name || !password) {
+        alert("Blank");
+        return;
+    }
+    $.ajax({
+        url: '/api/auth/log',
+        method: 'POST',
+        data: {
+            name: name,
+            password: password,
+        },
+        success: function (response) {
+            var str = response;
+            sessionStorage.setItem("token", str);
+            location.assign("app.html");
+        },
+        error: function (xhr) {
+            alertPanel('Error',xhr.responseText);
+        }
+    });
+});
+</script>

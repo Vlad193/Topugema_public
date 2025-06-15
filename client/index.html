@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/var.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <title>Topugema</title>
+</head>
+
+<body>
+    <div class="back"></div>
+    <div class="header-panel">
+        <h3>Topugema</h3>
+        <div class="horizontal-flex">
+            <button style="margin: 0 5px ;" onclick="location.assign('galery.html')">Галерея</button>
+            <button style="margin: 0 5px ;" onclick="location.assign('app.html')">Перейти в додаток</button>
+            <button style="margin: 0 5px ;" onclick="location.assign('about.html')">Про нас</button>
+        </div>
+        <h3 style="visibility: hidden;">Topugema</h3>
+    </div>
+    <div class="content">
+        <div class="panel">
+            <h1>Topugema</h1>
+            <p>Topugema — це сучасний мессенджер, створений спеціально для геймерів. Легкий, швидкий та без зайвого шуму, він дозволяє спілкуватися з друзями під час гри, створювати тематичні канали та обмінюватися медіа без затримок.</p>
+            <button onclick="location.assign('app.html')">Перейти в додаток</button>
+        </div>
+<div class="panel">
+    <h1>Інтерфейс</h1>
+
+    <div class="feature-row feature-large">
+        <img src="galery/1.png" alt="Інтерфейс Topugema">
+        <div class="feature-text info-border" style="border-color: var(--primary-color);">
+            <h3>Простий і сучасний інтерфейс</h3>
+            <p>Topugema має інтуїтивно зрозумілий інтерфейс, що дозволяє зосередитись на спілкуванні та обміні інформацією. Усе необхідне під рукою — без зайвих ускладнень.</p>
+        </div>
+    </div>
+
+    <div class="feature-row feature-small">
+        <img src="galery/2.png" alt="Групи та канали в Topugema">
+        <div class="feature-text info-border" style="border-color: var(--secondary-color);">
+            <h4>Створюйте власні групи з каналами</h4>
+            <p>Організовуйте спільноти за інтересами, створюйте тематичні канали для обговорень, медіа чи ідей. Управляйте групами гнучко та зручно.</p>
+        </div>
+    </div>
+</div>
+
+
+
+        <div class="panel">
+            <h1>Завантаження</h1>
+            <p>На данний час доступна тільки веб-версія</p>
+            <button onclick="location.assign('app.html')">Перейти в додаток</button>
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+.feature-row {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    background-color: var(--surface-color);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.feature-row img {
+    border-radius: 12px;
+    object-fit: cover;
+    width: 100%;
+    max-width: 100%;
+}
+
+.feature-text {
+    flex: 1 1 300px;
+    min-width: 250px;
+}
+
+.feature-text h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+}
+
+.feature-text p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.feature-large img {
+    flex: 1 1 500px;
+    max-width: 600px;
+}
+
+.feature-small img {
+    flex: 1 1 300px;
+    max-width: 350px;
+}
+
+
+</style>

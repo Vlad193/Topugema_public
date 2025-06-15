@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" class="sl-theme-dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topugema</title>
+    <link rel="stylesheet" href="styles/var.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/glob.css">
+    <link rel="stylesheet" href="styles/chats.css">
+    <link rel="stylesheet" href="styles/servers.css">
+    <link rel="stylesheet" href="styles/chat.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/users.css">
+    <link rel="stylesheet" href="styles/settings.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/dark.css"/>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>
+</head>
+<body>
+<div class="container">
+    <sl-split-panel id="split-chnl-main" style="--divider-width: 17px; width: 100%;" snap="0% 25% 50% 75% 100%">
+        <img slot="divider" src="icons/playlist.png" alt="" style="width: 15px;" onclick="ToggleChats()">
+        <div slot="start" class="container">
+                    <div id="glob-servers">
+                        <div id="server-container">
+                            <div class="server-card">
+                                <img src="img.jpg" alt="NaN">
+                            </div>
+                            <div class="server-card">
+                                <img src="img2.jpg" alt="NaN">
+                            </div>
+                            <div class="server-card">
+                                <img src="img3.jpg" alt="NaN">
+                            </div>
+                            <div class="server-card">
+                                EMPTY
+                            </div>
+                        </div>
+                        
+                        <div class="new-server">
+                            <img src="icons/add.png" class="icon-1c" onclick="showJoinSettings()">
+                        </div>
+                    </div>
+                    <div id="glob-chats">
+                        <div class ="sv-i-panel">
+                            <span id="server-name">Select Server</span>
+                            <img src="icons\settings-menu.png" class="white-ic" onclick="showServerSettings()">
+                        </div>
+                        <div id="chat-container">
+                            <div class="chat-card">
+                                <div class="chat-card-img-wrap">
+                                    <img src="img.jpg" alt="NaN">
+                                </div>
+                                <div class="chat-card-content">
+                                    <h2>Chat 1</h2>
+                                </div>
+                            </div>
+                            <div class="chat-card">
+                                <div class="chat-card-img-wrap">
+                                    <img src="img2.jpg" alt="NaN">
+                                </div>
+                                <div class="chat-card-content">
+                                    <h2>Chat 2</h2>
+                                </div>
+                            </div>
+                            <div class="chat-card">
+                                <div class="chat-card-img-wrap">
+                                    <img src="img3.jpg" alt="NaN">
+                                </div>
+                                <div class="chat-card-content">
+                                    <h2>Chat 3</h2>
+                                </div>
+                            </div>
+                            <div class="chat-card">
+                                <div class="chat-card-img-wrap">
+                                    
+                                </div>
+                                <div class="chat-card-content">
+                                    <h2>Chat 4</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+        <div slot="end" class="container">
+            <sl-split-panel id="split-main-usr" primary="end" style="--divider-width: 17px; --divider-color: red; width: 100%;" snap="0% 25% 50% 75% 100%">
+                <img slot="divider" src="icons/user.png" alt="" style="width: 15px;">
+                <div slot="start" class="container">
+                    <div id="glob-grid">
+        
+                        <div id="glob-header">
+                            <div class="header-circle" onclick="ToggleChats()">
+                                <img src="icons/playlist.png" alt="">
+                            </div>
+                            <div class="header-panel">
+                                <img id="close-mob" src="icons/x-mark.png" onclick="CloseCiUMobile()" style="display: none;">
+                                <div class="header-subpanel">
+                                    <img class="header-mob" src="icons/playlist.png" onclick="OpenChatsMobile()" style="display: none;">
+                                </div>
+                                <p id="channel-name">Select Channel</p>
+                                <div class="header-subpanel">
+                                    <img class="header-mob" src="icons/user.png" onclick="OpenUsersMobile()" style="display: none;">
+                                </div>
+                            </div>
+                            <div class="header-circle" onclick="ToggleUsers()">
+                                <img src="icons/user.png" alt="">
+                            </div>
+                        </div>
+                        <div id="glob-chat">
+                            <div class="msg-card" id="msg-${id}">
+                                <div class="msg-user-img"><img src="img.jpg" alt=""></div>
+                                <div class="msg-content-wrap">
+                                    <h3>User1</h3>
+                                    <div class="msg-content">
+                                        <p class="txt-break">Hello Chat! Let's play today</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="msg-card" id="msg-${id}">
+                                <div class="msg-user-img"><img src="img.jpg" alt=""></div>
+                                <div class="msg-content-wrap">
+                                    <h3>User1</h3>
+                                    <div class="msg-content">
+                                        <p class="txt-break">Check it</p>
+                                        <div class="msg-img-wrapper">
+                                            <img src="img3.jpg" class="msg-content-img">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="glob-footer">
+                            <img src="icons/link.png" class="icon-iv" onclick="showUploadSettings()">
+                            <input type="text" id="send-msg-txt" autocomplete="off">
+                            <button id="send-msg-btn" onclick="sendMessage()">
+                                <img src="icons\send.png" class="icon-iv">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div slot="end" class="container">
+            <div id="glob-users">
+                <!--p class="my-id">|id</p   <<<< DEBUG >>>>    -->
+                <div class ="sv-i-panel">
+                    <span class="my-name">User123</span>
+                    <img src="icons/settings.png" class="header-icons-img" onclick="showAccountSettings()"></img>
+                </div>
+                <div id="users-container">
+                    <div class="usr-card">
+                        <div class="usr-user-img">
+                            <img src="img.jpg" alt="">
+                        </div>
+                        <h3>User1</h3>
+                    </div>
+                    <div class="usr-card">
+                        <div class="usr-user-img">
+                            <img src="img2.jpg" alt="">
+                        </div>
+                        <h3>User2</h3>
+                    </div>
+                    <div class="usr-card">
+                        <div class="usr-user-img">
+                            <img src="img3.jpg" alt="">
+                        </div>
+                        <h3>User3</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </sl-split-panel>
+        </div>
+        
+    </sl-split-panel>
+
+</div>
+</body>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/@microsoft/signalr@5.0.8/dist/browser/signalr.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="scripts/script.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/serverMgr.js"></script>
+<script src="scripts/ui.js"></script>
+<script src="scripts/settings.js"></script>
+<script src="scripts/after_all.js"></script>

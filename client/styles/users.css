@@ -1,0 +1,51 @@
+#glob-users{
+    width: 300px;
+    grid-area: Users;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-color: rgb(114, 114, 114) rgb(43, 43, 43);
+    scrollbar-width: thin;
+    /*background-color: var(--background-color)*/
+    padding-left: 5px;
+}
+
+#glob-users h1, h2, h3, h4, h5, h6 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.usr-card{
+    padding: 5px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--surface-color);
+    border: var(--border-color) 5px solid;
+    border-radius: 12px;
+    border-radius: 20px;
+}
+
+
+.usr-user-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--user-avatar-size); 
+    height: var(--user-avatar-size); 
+    background-color: var(--surface-color);
+    border: var(--border-color) 5px solid;
+    border-radius: 50%;
+}
+.usr-user-img img{
+    width: var(--user-avatar-size); 
+    height: var(--user-avatar-size); 
+    object-fit: cover; 
+    object-position: center; 
+    display: block;
+    border-radius: 50%;
+}

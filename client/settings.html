@@ -1,0 +1,338 @@
+<div class="settings" id="server-settings">
+    <div class="settings-panel">
+        <div class="settings-content">
+            <div class="settings-header">
+                <br>
+                <h3>Server Settings</h3>
+                <img src="icons/x-mark.png" alt="" onclick="hideServerSettings()/*document.querySelector('sl-tab-group#s-server').show('t-s-confirm')*/">
+            </div>
+            <sl-tab-group fixed-scroll-controls id="s-server">
+                <sl-tab slot="nav" panel="t-s-profile">Profile</sl-tab>
+                <sl-tab slot="nav" panel="t-s-channels">Channels</sl-tab>
+                <sl-tab slot="nav" panel="t-s-advanced">Advanced</sl-tab>
+                <sl-tab slot="nav" panel="t-s-exit">Exit</sl-tab>
+                <sl-tab slot="nav" panel="t-s-new-c" style="display:none;"></sl-tab>
+
+                <sl-tab-panel name="t-s-profile">
+                    <sl-tree>
+                        <sl-tree-item>
+                            Server Name:&nbsp; <span id="s-sv-name">Blank</span>
+                            <sl-tree-item>
+                                <form class="setting-form-s" action="/api/settings/server_name">
+                                    <input type="text" name="name" autocomplete="off" placeholder="Name">
+                                    <input type="submit" value="Change">
+                                </form>
+                            </sl-tree-item>
+                        </sl-tree-item>
+                        <sl-tree-item>
+                            Server Avatar
+                            <sl-tree-item>
+                                <form class="setting-form-s" action="/api/images/server_avatar">
+                                    <input type="file" name="file">
+                                    <input type="submit" value="Change">
+                                </form>
+                            </sl-tree-item>
+                        </sl-tree-item>
+                        <sl-tree-item>
+                            Server ID:&nbsp; <span id="s-sv-id"></span> 
+                        </sl-tree-item>
+                    </sl-tree>
+                    <h2></h2>
+                    
+                    
+                </sl-tab-panel>
+                <sl-tab-panel name="t-s-channels">
+                    <sl-tree id="s-chat-container">
+                        <sl-tree-item>
+                            Test1
+                            <sl-tree-item>
+                                Change Name
+                                <sl-tree-item>
+                                <form class="setting-form-s" action="/api/settings/channel_name">
+                                    <input type="hidden" name="chat_id" value="0">
+                                    <input type="text" name="name" autocomplete="off" placeholder="Name">
+                                    <input type="submit" value="Change">
+                                </form>
+                                </sl-tree-item>
+                            </sl-tree-item>
+                            <sl-tree-item>
+                                Change Avatar
+                                <sl-tree-item>
+                                <form class="setting-form-s" action="/api/images/channel_avatar">
+                                    <input type="hidden" name="chat_id" value="0">
+                                    <input type="file" name="file">
+                                    <input type="submit" value="Change">
+                                </form>
+                                </sl-tree-item>
+                            </sl-tree-item>
+                            <sl-tree-item>
+                                Delete
+                                <sl-tree-item>
+                                <form class="setting-form-s" action="/api/settings/channel_delete">
+                                    <input type="hidden" name="chat_id" value="0">
+                                    <input type="submit" value="Confirm">
+                                </form>
+                                </sl-tree-item>
+                            </sl-tree-item>
+                        </sl-tree-item>
+                    </sl-tree>                 
+                    <img src="icons/add.png" class="icon-1c" onclick="document.querySelector('sl-tab-group#s-server').show('t-s-new-c');">
+                    
+                </sl-tab-panel>
+                <sl-tab-panel name="t-s-advanced">
+                    
+                </sl-tab-panel>
+                <sl-tab-panel name="t-s-exit">
+                    <sl-tree>
+                        <sl-tree-item>
+                            Leave Server
+                            <sl-tree-item>
+                                <form class="setting-form-s" action="/api/settings/leave_server">
+                                    <input type="submit" value="Leave">
+                                </form>
+                            </sl-tree-item>
+                        </sl-tree-item>
+                        <sl-tree-item>
+                            Delete Server
+                            <sl-tree-item>
+                                <form class="setting-form-s" action="/api/settings/delete_server">
+                                    <label for="name">Enter this server name to delete:</label>
+                                    <input type="text" name="name" autocomplete="off" placeholder="Server Name">
+                                    <input type="submit" value="Delete Server">
+                                    <div>
+                                        <span class="down-label">Only Owner can delete this server.</span>
+                                    </div>
+                                </form>
+                            </sl-tree-item>
+                        </sl-tree-item>
+                    </sl-tree>
+                </sl-tab-panel>
+                <sl-tab-panel name="t-s-new-c">
+                    <h2>Create new Channel</h2>
+                    <form class="setting-form-s" action="/api/settings/new_channel">
+                        <input type="text" name="name" autocomplete="off" placeholder="Name">
+                        <input type="submit" value="Create">
+                    </form>
+                </sl-tab-panel>
+            </sl-tab-group>
+        </div>
+    </div>
+</div>
+<div class="settings" id="account-settings">
+    <div class="settings-panel">
+        <div class="settings-content">
+            <div class="settings-header">
+                <br>
+                <h3>Account Settings</h3>
+                <img src="icons/x-mark.png" alt="" onclick="hideAccountSettings()/*document.querySelector('sl-tab-group#s-account').show('t-confirm')*/">
+            </div>
+            <sl-tab-group fixed-scroll-controls id="s-account">
+                <sl-tab slot="nav" panel="t-profile">Profile</sl-tab>
+                <sl-tab slot="nav" panel="t-account">Account</sl-tab>
+                <sl-tab slot="nav" panel="t-advanced">Advanced</sl-tab>
+                <sl-tab slot="nav" panel="t-confirm" style="display:none;"></sl-tab>
+                
+                <sl-tab-panel name="t-profile">
+                    <sl-tree>
+                        <sl-tree-item>
+                            User Name:&nbsp; <span class="my-name">Blank</span>
+                            <sl-tree-item>
+                                <form class="setting-form" action="/api/settings/change_username">
+                                    <input type="text" name="name" placeholder="New Username" autocomplete="off">
+                                    <input type="submit" value="Change">
+                                    <div>
+                                        <span class="down-label">Be careful, its will change your login name, in next time use your new Username for login.</span>
+                                    </div>
+                                </form>
+                            </sl-tree-item>
+                        </sl-tree-item>
+                        <sl-tree-item>
+                            User Avatar
+                            <sl-tree-item>
+                                    <form class="setting-form" action="/api/images/change_avatar">
+                                    <input type="file" name="file">
+                                    <input type="submit" value="Change">
+                                </form>
+                            </sl-tree-item>
+                        </sl-tree-item>
+                    </sl-tree>
+                </sl-tab-panel>
+                <sl-tab-panel name="t-account">
+                    <sl-tree>
+                        <sl-tree-item>
+                            Change Password
+                            <sl-tree-item>
+                                <form class="setting-form" action="/api/settings/change_password">
+                                    <input type="password" name="current_password" placeholder="Current Password">
+                                    <br>
+                                    <input type="password" name="password" placeholder="New Password">
+                                    <br>
+                                    <input type="password" name="confirm_password" placeholder="Repeat Password">
+                                    <br>
+                                    <input type="submit" value="Change">
+                                    <div>
+                                        <span class="down-label">After change please relogin, because your session will become invalid.</span>
+                                    </div>
+                                </form>
+                            </sl-tree-item>
+                        </sl-tree-item>
+                    </sl-tree>
+                </sl-tab-panel>
+                <sl-tab-panel name="t-advanced">
+                    
+                </sl-tab-panel>
+                <sl-tab-panel name="t-confirm">
+                    <h3>You have unsaved changes</h3>
+                    <button onclick="hideAccountSettings()">Save</button>
+                    <button onclick="hideAccountSettings()">Close without saving</button>
+                </sl-tab-panel>
+            </sl-tab-group>
+
+        </div>
+    </div>
+</div>
+<div class="settings" id="join-settings">
+    <div class="settings-panel">
+        <div class="settings-content">
+            <div class="settings-header">
+                <br>
+                <h3>Join Or Create Server</h3>
+                <img src="icons/x-mark.png" alt="" onclick="hideJoinSettings()">
+            </div>
+            <sl-tree>
+                <sl-tree-item>
+                    Join to server by ID
+                    <sl-tree-item>
+                        <input type="number" id="s-jn-sid" placeholder="Server ID">
+                        <button onclick="location.assign('invite.html?id=' + $('#s-jn-sid').val());" >Join</button>
+                    </sl-tree-item>
+                </sl-tree-item>
+                <sl-tree-item>
+                    Create new Server
+                    <sl-tree-item>
+                        <input type="text" id="s-jn-sname" placeholder="Server Name">
+                        <button onclick="createServer($('#s-jn-sname').val());" >Create</button>
+                    </sl-tree-item>
+                </sl-tree-item>
+            </sl-tree>
+        </div>
+    </div>
+</div>
+
+<div class="settings" id="upload-settings">
+    <div class="settings-panel">
+        <div class="settings-content">
+            <div class="settings-header">
+                <br>
+                <h3>Send Image with Description</h3>
+                <img src="icons/x-mark.png" alt="" onclick="hideUploadSettings()">
+            </div>
+            <form id="s-upload" style="display: flex; flex-direction: column;">
+                <input type="text" name="desc" id="s-u-desc" autocomplete="off">
+                <input type="file" name="file" id="s-u-file">
+                <input type="submit" value="Send">
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+.down-label{color: rgb(160, 160, 160)};
+#settings-container {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.settings {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.settings::after {
+    position: absolute;
+    content: "";
+    background: linear-gradient(to bottom right, var(--primary-color-dark) 0%, var(--secondary-color-dark) 100%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    z-index: -1;
+}
+
+.settings-panel {
+    height: 80%;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    background: var(--surface-color);
+    border: var(--border-color) 3px solid;
+    border-radius: 5px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.settings-tabs {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    border-right: var(--border-color) 3px solid;
+    box-sizing: border-box;
+}
+
+.settings-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.settings-header {
+    flex-shrink: 0;
+    width: 100%;
+    height: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: var(--border-color) 3px solid;
+    box-sizing: border-box;
+}
+
+/* Tab group grows to fill space below header */
+sl-tab-group {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-color: rgb(114, 114, 114) rgb(43, 43, 43);
+    scrollbar-width: thin;
+}
+
+
+/* Each tab panel fills space and contains scrollable content */
+
+
+/* Scrollable content inside */
+.settings-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+
+
+</style>
